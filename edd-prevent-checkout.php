@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Easy Digital Downloads - Prevent Checkout
-Plugin URI: http://sumobi.com/shop/edd-prevent-checkout/
-Description: Prevents customer from being able to checkout until a minimum cart total is reached
-Version: 1.0
-Author: Andrew Munro, Sumobi
-Author URI: http://sumobi.com/
+Plugin URI: https://easydigitaldownloads.com/downloads/edd-prevent-checkout/
+Description: Prevents customers from being able to checkout until a minimum cart total is reached
+Version: 1.0.1
+Author: Easy Digital Downloads
+Author URI: https://easydigitaldownloads.com/
 License: GPL-2.0+
 License URI: http://www.opensource.org/licenses/gpl-license.php
 */
@@ -68,7 +68,7 @@ if ( ! class_exists( 'EDD_Prevent_Checkout' ) ) {
 
 			// add settings
 			add_filter( 'edd_settings_extensions', array( $this, 'settings' ) );
-			
+
 			// sanitize settings
 			add_filter( 'edd_settings_extensions_sanitize', array( $this, 'sanitize_settings' ) );
 
@@ -117,7 +117,7 @@ if ( ! class_exists( 'EDD_Prevent_Checkout' ) ) {
 
 			edd_print_errors();
 		}
-		
+
 		/**
 		 * Can checkout?
 		 * Prevents the form from being displayed at all until the minimum cart total has been reached
@@ -125,9 +125,9 @@ if ( ! class_exists( 'EDD_Prevent_Checkout' ) ) {
 		 * @since 1.0
 		*/
 		function can_checkout( $can_checkout ) {
-			
+
 			$cart_amount = edd_get_cart_total();
-		
+
 			// if the cart amount is less than the minimum cart amount required we don't let the customer check out
 			if ( $cart_amount < $this->minimum_cart_amount_required() ) {
 				$can_checkout = false;
@@ -174,7 +174,7 @@ if ( ! class_exists( 'EDD_Prevent_Checkout' ) ) {
 
 			return $input;
 		}
-		
+
 	}
 
 }
